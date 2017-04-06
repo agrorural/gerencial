@@ -14,10 +14,8 @@
                 @endif
             </div>
         @endif
-        <h1>Bienvenido</h1>
+        <h1 class="page-header">Dashboard</h1>
         <div id="app">
-            <ul>
-                <li v-for="persona in personas">@{{ persona['des_empresa'] }}</li>
-            </ul>
+
         </div>
 @stop

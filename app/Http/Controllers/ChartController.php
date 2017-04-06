@@ -24,7 +24,7 @@ class ChartController extends Controller
              ->elementLabel('Remuneración')
              ->labels($persona->pluck('des_tipo_persona'))
              ->values($persona->pluck('imp_remuneracion'))
-             ->responsive(false);
+             ->responsive(true);
 
         return view('chart', ['chart' => $chart]);
     }

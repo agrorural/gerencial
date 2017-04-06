@@ -5,8 +5,13 @@
 @stop
 
 @section('content')
-        <h1>Charts</h1>
+	<div id="app">
+        
+	</div>
+	<div id ="chart">
+		<h1>Charts</h1>
         <center>
             {!! $chart->render() !!}
         </center>
+	</div>
 @stop

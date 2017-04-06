@@ -18,7 +18,11 @@ Route::get('/', function () {
 });
 
 Route::get('/persona', function () {
-    return Persona::all();
+    return Persona::select('des_tipo_persona as tipo','id_year as año', 'id_month as mes', 'imp_patronal as patronal', 'imp_remuneracion as remuneración', 'total_persona as total')->get();
+});
+
+Route::get('/reportes', function () {
+    return view('reportes');
 });
 
 Route::get('/chart', 'ChartController@index');
