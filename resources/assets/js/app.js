@@ -17,6 +17,7 @@ require('./bootstrap');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('chart', require('./components/Chart.vue'));
 
 // register the grid component
 Vue.component('grid', {

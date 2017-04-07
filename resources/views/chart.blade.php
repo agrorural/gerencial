@@ -6,7 +6,7 @@
 
 @section('content')
 	<div id="app">
-        
+        <chart></chart>
 	</div>
 	<div id ="chart">
 		<h1>Charts</h1>
