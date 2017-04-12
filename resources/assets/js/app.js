@@ -81,7 +81,7 @@ const app = new Vue({
     gridColumns: ['tipo', 'año', 'mes', 'patronal', 'remuneración', 'total'],
     gridData: []
   },
-    
+
     mounted(){
       //Make an ajax request to our server /persona
       axios.get('/persona').then(response => this.gridData = response.data);

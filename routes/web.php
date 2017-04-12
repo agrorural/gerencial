@@ -22,7 +22,10 @@ Route::get('/persona', function () {
 });
 
 Route::get('/persona/chart', function () {
-    return Persona::select('des_tipo_persona as labels','imp_remuneracion as data')->where('id_year', '=', '2017')->where('id_month', '=', '01')->get();
+    return Persona::select('des_tipo_persona as label','imp_remuneracion as data', 'id_tipo_persona as id_persona', 'id_month as mes')
+        ->orderBy('id_persona')
+        ->orderBy('mes')
+    		->get();
 });
 
 Route::get('/reportes', function () {

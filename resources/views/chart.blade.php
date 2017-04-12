@@ -6,6 +6,7 @@
 
 @section('content')
 	<div id="app">
+    <h1 class="page-header">Reportes</h1>
         <chart></chart>
 	</div>
 	<div id ="chart">
