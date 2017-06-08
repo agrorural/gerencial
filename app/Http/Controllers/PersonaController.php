@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Persona;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 class PersonaController extends Controller
 {
@@ -15,6 +16,33 @@ class PersonaController extends Controller
     public function index()
     {
         //
+    }
+
+    public function getPersonas(){
+      $personas = Persona::select('des_tipo_persona','id_year', 'id_month', 'imp_patronal', 'imp_remuneracion', 'total_persona')->get();
+
+      for ($i=0; $i < $personas->count() ; $i++) {
+        switch ($personas[$i]->id_month) {
+          case "01":
+            $personas[$i]->id_month = 'Enero';
+            break;
+          case "02":
+              $personas[$i]->id_month = 'Febrero';
+              break;
+          case "03":
+              $personas[$i]->id_month = 'Marzo';
+              break;
+          default:
+            $personas[$i]->id_month = 'No hay fecha';
+            break;
+        }
+        $personas[$i]->imp_patronal = number_format($personas[$i]->imp_patronal);
+        $personas[$i]->imp_remuneracion = number_format($personas[$i]->imp_remuneracion);
+      }
+
+      // return $personas;
+
+      return Datatables::of($personas)->make(true);
     }
 
     /**

@@ -17,15 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/persona', function () {
-    return Persona::select('des_tipo_persona as tipo','id_year as año', 'id_month as mes', 'imp_patronal as patronal', 'imp_remuneracion as remuneración', 'total_persona as total')->get();
-});
+Route::get('/persona', 'PersonaController@getPersonas')->name('datatable.personas');
 
 Route::get('/persona/chart', function () {
-    return Persona::select('des_tipo_persona as label','imp_remuneracion as data', 'id_tipo_persona as id_persona', 'id_month as mes')
+    $personas = Persona::select('des_tipo_persona as label','imp_remuneracion as data', 'id_tipo_persona as id_persona', 'id_month as mes')
         ->orderBy('id_persona')
         ->orderBy('mes')
     		->get();
+
+        return $personas;
 });
 
 Route::get('/reportes', function () {

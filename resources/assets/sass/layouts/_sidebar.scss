@@ -1,0 +1,15 @@
+.sidebar {
+    /* CSS declarations for `.block` */
+
+    @include element('nav') {
+        /* CSS declarations for `.block__element` */
+    }
+
+    @include modifier('active') {
+        /* CSS declarations for `.block--modifier` */
+
+        @include element('element') {
+            /* CSS declarations for `.block--modifier__element` */
+        }
+    }
+}
