@@ -17,12 +17,61 @@ require('./bootstrap');
  */
 
 Vue.component('example', require('./components/Example.vue'));
-Vue.component('chart', require('./components/Chart.vue'));
+// Vue.component('chart', require('./components/Chart.vue'));
 Vue.component('sidebar-menu', require('./components/SidebarMenu.vue'));
+
+import Chartkick from 'chartkick'
+import VueChartkick from 'vue-chartkick'
+
+Vue.use(VueChartkick, { Chartkick })
 
 // bootstrap the demo
 const app = new Vue({
   el: '#app',
-  data: {},
-  methods: {}
+  data: {
+      chartData: []
+    }, 
+  mounted: function(){
+      axios({
+        method: 'get',
+        url: '/persona/charts',
+        transformResponse: [function (data) {
+          var respuesta = JSON.parse(data);
+          //{name: 'AGRO RURAL', data: {"Enero": 25000, "Febrero": 50000, "Marzo": 45000}}
+          var transformado = [];
+
+          $.each(respuesta, function(key, value) {
+
+          	var obj = {name: null, data: {Enero:null,Febrero:null,Marzo:null}};
+
+          	obj.name = value.name;
+//debugger;
+          	$.each(value.data, function(key, value) {
+         		//debugger;
+          		switch (value.id_month) {
+		          case "01":
+		            obj.data.Enero = value.imp_patronal;
+		            break;
+		          case "02":
+		            obj.data.Febrero = value.imp_patronal;
+		              break;
+		          case "03":
+		            obj.data.Marzo = value.imp_patronal;
+		              break;
+		        }
+          	});
+
+			transformado.push(obj);
+
+          });
+          // debugger;
+
+          return transformado;
+        }]
+      }).then(response => {
+    // debugger;
+      this.chartData = response.data;
+    });
+
+    },
 })

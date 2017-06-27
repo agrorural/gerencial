@@ -9,6 +9,7 @@
         <!-- Styles -->
         <link href="{{ URL::asset('/css/app.css?ver=1') }}" rel="stylesheet" type="text/css">
         <link href="{{ URL::asset('/css/dashboard.css?ver=1') }}" rel="stylesheet" type="text/css">
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
         @yield('head')
     </head>
     <body class="{{$body_class}}">

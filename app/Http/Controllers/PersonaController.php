@@ -45,6 +45,21 @@ class PersonaController extends Controller
       return Datatables::of($personas)->make(true);
     }
 
+    public function getChartPersonas(){
+        $tipos = Persona::select('id_tipo_persona as id', 'des_tipo_persona as name')
+        ->distinct()
+        ->orderBy('id', 'asc')
+        ->get();
+
+        for ($i=0; $i < $tipos->count(); $i++) { 
+            $tipos[$i]->data = Persona::select('id_month', 'imp_patronal')
+            ->where('id_tipo_persona', '=', $tipos[$i]->id)->get();
+        }
+
+        return $tipos;
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

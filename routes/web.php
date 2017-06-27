@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/persona', 'PersonaController@getPersonas')->name('datatable.personas');
+Route::get('/persona/charts', 'PersonaController@getChartPersonas');
 
 Route::get('/persona/chart', function () {
     $personas = Persona::select('des_tipo_persona as label','imp_remuneracion as data', 'id_tipo_persona as id_persona', 'id_month as mes')
