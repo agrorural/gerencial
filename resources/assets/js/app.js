@@ -17,7 +17,6 @@ require('./bootstrap');
  */
 
 Vue.component('example', require('./components/Example.vue'));
-// Vue.component('chart', require('./components/Chart.vue'));
 Vue.component('sidebar-menu', require('./components/SidebarMenu.vue'));
 
 import Chartkick from 'chartkick'
@@ -29,39 +28,68 @@ Vue.use(VueChartkick, { Chartkick })
 const app = new Vue({
   el: '#app',
   data: {
-      chartData: []
+      personaData: []
     }, 
   mounted: function(){
       axios({
         method: 'get',
         url: '/persona/charts',
         transformResponse: [function (data) {
-          var respuesta = JSON.parse(data);
-          //{name: 'AGRO RURAL', data: {"Enero": 25000, "Febrero": 50000, "Marzo": 45000}}
-          var transformado = [];
+        var respuesta = JSON.parse(data);
+        //{name: 'Workout', data: {'2013-02-10 00:00:00 -0800': 3, '2013-02-17 00:00:00 -0800': 4}},
+        //{name: 'Call parents', data: {'2013-02-10 00:00:00 -0800': 5, '2013-02-17 00:00:00 -0800': 3}}
+        var transformado = [];
 
           $.each(respuesta, function(key, value) {
+            //console.log(value);
+          	var persona = {name: null, data: {}};
 
-          	var obj = {name: null, data: {Enero:null,Febrero:null,Marzo:null}};
-
-          	obj.name = value.name;
-//debugger;
+          	persona.name = value.name;
+            //debugger;
           	$.each(value.data, function(key, value) {
          		//debugger;
+            console.log(value);
           		switch (value.id_month) {
 		          case "01":
-		            obj.data.Enero = value.imp_patronal;
+		            persona.data.ENE = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
 		            break;
 		          case "02":
-		            obj.data.Febrero = value.imp_patronal;
-		              break;
+		            persona.data.FEB = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+		            break;
 		          case "03":
-		            obj.data.Marzo = value.imp_patronal;
-		              break;
-		        }
+		            persona.data.MAR = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+		            break;
+              case "04":
+                persona.data.ABR = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                break;
+              case "05":
+                persona.data.MAY = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                break;
+              case "06":
+                persona.data.JUN = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                break;
+              case "07":
+                persona.data.JUN = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                break;
+              case "08":
+                persona.data.AGO = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                break;
+              case "09":
+                persona.data.SET = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                break;
+              case "10":
+                persona.data.OCT = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                break;
+              case "11":
+                persona.data.NOV = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                break;
+              case "12":
+                persona.data.DIC = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                break;
+		          }
           	});
 
-			transformado.push(obj);
+			       transformado.push(persona);
 
           });
           // debugger;
@@ -70,7 +98,7 @@ const app = new Vue({
         }]
       }).then(response => {
     // debugger;
-      this.chartData = response.data;
+      this.personaData = response.data;
     });
 
     },

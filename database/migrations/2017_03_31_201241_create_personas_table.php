@@ -24,7 +24,7 @@ class CreatePersonasTable extends Migration
             $table->decimal('imp_remuneracion', 10, 0)->nullable();
             $table->decimal('imp_patronal', 10, 0)->nullable();
             $table->decimal('total_persona', 10, 0)->nullable();
-            $table->timestamps();
+            $table->date('fec_persona')->nullable();  
         });
     }
 

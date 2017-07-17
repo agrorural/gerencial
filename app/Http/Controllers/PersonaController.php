@@ -32,6 +32,33 @@ class PersonaController extends Controller
           case "03":
               $personas[$i]->id_month = 'Marzo';
               break;
+           case "04":
+              $personas[$i]->id_month = 'Abril';
+              break;
+           case "05":
+              $personas[$i]->id_month = 'Mayo';
+              break;
+           case "06":
+              $personas[$i]->id_month = 'Junio';
+              break;
+           case "07":
+              $personas[$i]->id_month = 'Julio';
+              break;
+           case "08":
+              $personas[$i]->id_month = 'Agosto';
+              break;
+           case "09":
+              $personas[$i]->id_month = 'Setiembre';
+              break;
+           case "10":
+              $personas[$i]->id_month = 'Octubre';
+              break;
+           case "11":
+              $personas[$i]->id_month = 'Noviembre';
+              break;
+           case "12":
+              $personas[$i]->id_month = 'Diciembre';
+              break;
           default:
             $personas[$i]->id_month = 'No hay fecha';
             break;
@@ -52,7 +79,7 @@ class PersonaController extends Controller
         ->get();
 
         for ($i=0; $i < $tipos->count(); $i++) { 
-            $tipos[$i]->data = Persona::select('id_month', 'imp_patronal')
+            $tipos[$i]->data = Persona::select('id_month', 'imp_patronal', 'imp_remuneracion', 'total_persona')
             ->where('id_tipo_persona', '=', $tipos[$i]->id)->get();
         }
 
