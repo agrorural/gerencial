@@ -28,78 +28,108 @@ Vue.use(VueChartkick, { Chartkick })
 const app = new Vue({
   el: '#app',
   data: {
-      personaData: []
-    }, 
+    personaData: [],
+    personaTotal: []
+  }, 
   mounted: function(){
       axios({
         method: 'get',
-        url: '/persona/charts',
+        url: '/persona/graficas',
         transformResponse: [function (data) {
-        var respuesta = JSON.parse(data);
+        let respuesta = JSON.parse(data);
         //{name: 'Workout', data: {'2013-02-10 00:00:00 -0800': 3, '2013-02-17 00:00:00 -0800': 4}},
         //{name: 'Call parents', data: {'2013-02-10 00:00:00 -0800': 5, '2013-02-17 00:00:00 -0800': 3}}
-        var transformado = [];
+        let trasResponse = {data1: [], data2: []};
 
           $.each(respuesta, function(key, value) {
             //console.log(value);
-          	var persona = {name: null, data: {}};
+            let persona = {name: null, data: {}};
+          	let persona2 = {name: null, data: {}};
 
-          	persona.name = value.name;
+            persona.name = value.name;
+          	persona2.name = value.name;
             //debugger;
           	$.each(value.data, function(key, value) {
          		//debugger;
-            console.log(value);
+            //console.log(value);
           		switch (value.id_month) {
 		          case "01":
-		            persona.data.ENE = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                persona.data.ENE = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+		            persona2.data.ENE = parseInt(value.total_persona);
 		            break;
 		          case "02":
 		            persona.data.FEB = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
-		            break;
+		            persona2.data.FEB = parseInt(value.total_persona);
+                break;
 		          case "03":
 		            persona.data.MAR = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
-		            break;
+		            persona2.data.MAR = parseInt(value.total_persona);
+                break;
               case "04":
                 persona.data.ABR = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                persona2.data.ABR = parseInt(value.total_persona);
                 break;
               case "05":
                 persona.data.MAY = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                persona2.data.MAY = parseInt(value.total_persona);
                 break;
               case "06":
                 persona.data.JUN = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                persona2.data.JUN = parseInt(value.total_persona);
                 break;
               case "07":
-                persona.data.JUN = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                persona.data.JUL = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                persona2.data.JUL = parseInt(value.total_persona);
                 break;
               case "08":
                 persona.data.AGO = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                persona2.data.AGO = parseInt(value.total_persona);
                 break;
               case "09":
                 persona.data.SET = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                persona2.data.SET = parseInt(value.total_persona);
                 break;
               case "10":
                 persona.data.OCT = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                persona2.data.OCT = parseInt(value.total_persona);
                 break;
               case "11":
                 persona.data.NOV = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                persona2.data.NOV = parseInt(value.total_persona);
                 break;
               case "12":
                 persona.data.DIC = (+parseFloat(value.imp_patronal).toFixed(10)) + (+parseFloat(value.imp_remuneracion).toFixed(10));
+                persona2.data.DIC = parseInt(value.total_persona);
                 break;
 		          }
           	});
 
-			       transformado.push(persona);
+             trasResponse.data1.push(persona);
+			       trasResponse.data2.push(persona2);
 
           });
           // debugger;
 
-          return transformado;
+          return trasResponse;
         }]
       }).then(response => {
-    // debugger;
-      this.personaData = response.data;
+      //debugger;
+      this.personaData = response.data.data1;
+      this.personaTotal = response.data.data2;
+      //console.log(response.data);
+      //debugger;
     });
 
     },
 })
+
+$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+
+     // Initialize collapse button
+    $(".button-collapse").sideNav();
+    // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+    $('.collapsible').collapsible();
+  });
+

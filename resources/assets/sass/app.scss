@@ -11,7 +11,10 @@
 @import "layouts/sidebar";
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// MaterializeCSS
+@import "node_modules/materialize-css/sass/materialize";
 
 // DataTables
 @import "datatables";
@@ -24,12 +27,31 @@ body {
 	font-family: sans-serif;
 }
 
-.spinner-wrapper{
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	.spinner{
-		color: tomato;
+header, main, footer {
+    padding-left: 300px;
+}
+
+#content{
+	padding: 30px 0;
+}
+
+ul.side-nav.fixed li.logo {
+    text-align: center;
+    margin-top: 32px;
+    margin-bottom: 64px;
+}
+
+nav.top-nav {
+    height: 122px;
+    box-shadow: none;
+    a.page-title {
+    	line-height: 122px;
+    	font-size: 48px;
+	}
+}
+
+@media only screen and (max-width: 992px){
+	header, main, footer {
+    	padding-left: 0;
 	}
 }

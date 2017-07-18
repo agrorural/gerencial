@@ -1,8 +1,8 @@
-@extends ('master', ['body_class' => 'reportes'])
+@extends ('master', ['body_class' => 'inicio'])
 @section('head')
 @stop
 @section('pageName')
-Reportes
+Gráficas
 @stop
 @section('sidebar')
 @stop

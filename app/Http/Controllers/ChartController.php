@@ -16,17 +16,7 @@ class ChartController extends Controller
      */
     public function index()
     {
-        $persona = Persona::where('id_year', '=', '2017')->where('id_month', '=', '01')->get();
-        //Muestra los Charts
-        $chart = Charts::create('bar', 'google')
-             ->title('Tipo de Personal vs. Remuneración [Periodo de Enero 2017]')
-             ->dimensions(1000, 700)
-             ->elementLabel('Remuneración')
-             ->labels($persona->pluck('des_tipo_persona'))
-             ->values($persona->pluck('imp_remuneracion'))
-             ->responsive(true);
 
-        return view('chart', ['chart' => $chart]);
     }
 
     /**

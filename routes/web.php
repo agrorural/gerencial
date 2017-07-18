@@ -17,20 +17,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/persona', 'PersonaController@getPersonas')->name('datatable.personas');
-Route::get('/persona/charts', 'PersonaController@getChartPersonas');
-
-Route::get('/persona/chart', function () {
-    $personas = Persona::select('des_tipo_persona as label','imp_remuneracion as data', 'id_tipo_persona as id_persona', 'id_month as mes')
-        ->orderBy('id_persona')
-        ->orderBy('mes')
-    		->get();
-
-        return $personas;
-});
-
 Route::get('/reportes', function () {
     return view('reportes');
 });
 
-Route::get('/chart', 'ChartController@index');
+	Route::get('/reportes/persona', function () {
+    	return view('reportes.persona');
+	});
+
+Route::get('/graficas', function () {
+    	return view('graficas');
+	});
+
+	Route::get('/graficas/persona', function () {
+	    return view('graficas.persona');
+	});
+
+
+
+Route::get('/persona/datatable', 'PersonaController@getPersonas')->name('datatable.personas');
+
+Route::get('/persona/graficas', 'PersonaController@getChartPersonas');

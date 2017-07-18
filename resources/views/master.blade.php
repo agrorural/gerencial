@@ -5,42 +5,42 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Información Gerencial de AGRO RURAL</title>
+        <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
         <!-- Styles -->
         <link href="{{ URL::asset('/css/app.css?ver=1') }}" rel="stylesheet" type="text/css">
-        <link href="{{ URL::asset('/css/dashboard.css?ver=1') }}" rel="stylesheet" type="text/css">
         <script src="https://www.gstatic.com/charts/loader.js"></script>
         @yield('head')
     </head>
     <body class="{{$body_class}}">
-        <nav class="navbar navbar-default navbar-fixed-top">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/">Información Gerencial</a>
+      <div id="app">
+        <header>
+          <nav class="top-nav">
+            <div class="container">
+              <div class="nav-wrapper"><a class="page-title">@yield('pageName')</a></div>
+            </div>
+          </nav>
+          <div class="container">
+            <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
+          </div>
+          @yield('sidebar')
+          <sidebar-menu></sidebar-menu>
+        </header>
+        <main>
+          <div class="container">
+            <div id="content" class="row">
+              <div class="col s12 m12 l112">
+                @yield('content')
+              </div>
             </div>
           </div>
-        </nav>
-        <div class="container-fluid">
-          <div id="app" class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                @yield('sidebar')
-              <sidebar-menu></sidebar-menu>
-
-            </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-              @yield('content')
-            </div>
-          </div>
-        </div>
+        </main>
+      </div>
         @yield('pre-footer')
         <script src="{{ mix('js/app.js') }}"></script>
         @yield('footer')
-
+      
     </body>
 </html>
