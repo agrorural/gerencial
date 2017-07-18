@@ -27,12 +27,19 @@ body {
 	font-family: sans-serif;
 }
 
+header{
+    position: relative;
+}
+
 header, main, footer {
     padding-left: 300px;
 }
 
 #content{
 	padding: 30px 0;
+    select{
+        display: inherit;
+    }
 }
 
 ul.side-nav.fixed li.logo {
@@ -45,10 +52,40 @@ nav.top-nav {
     height: 122px;
     box-shadow: none;
     a.page-title {
+        font-size: 36px;
     	line-height: 122px;
-    	font-size: 48px;
+    	
 	}
 }
+
+.button-collapse.top-nav{
+    color: white;
+}
+
+@media only screen and (max-width: 600px){
+    nav.top-nav {
+        height: 72px;
+        text-align: center;
+        a.page-title {
+            font-size: 18px;
+            line-height: 72px;
+            
+        }
+    }
+
+    .button-collapse.top-nav{
+        position: absolute;
+        top: 33%;
+        left: 5%;
+    }
+}
+
+@media only screen and (min-width: 993px){
+    .container {
+        width: 90%; 
+    }
+}
+
 
 @media only screen and (max-width: 992px){
 	header, main, footer {

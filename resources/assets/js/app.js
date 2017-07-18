@@ -29,16 +29,16 @@ const app = new Vue({
   el: '#app',
   data: {
     personaData: [],
-    personaTotal: []
+    personaTotal: [],
+    fuenteTotal: []
   }, 
+  
   mounted: function(){
-      axios({
+    axios({
         method: 'get',
         url: '/persona/graficas',
         transformResponse: [function (data) {
         let respuesta = JSON.parse(data);
-        //{name: 'Workout', data: {'2013-02-10 00:00:00 -0800': 3, '2013-02-17 00:00:00 -0800': 4}},
-        //{name: 'Call parents', data: {'2013-02-10 00:00:00 -0800': 5, '2013-02-17 00:00:00 -0800': 3}}
         let trasResponse = {data1: [], data2: []};
 
           $.each(respuesta, function(key, value) {
@@ -113,23 +113,48 @@ const app = new Vue({
           return trasResponse;
         }]
       }).then(response => {
-      //debugger;
-      this.personaData = response.data.data1;
-      this.personaTotal = response.data.data2;
-      //console.log(response.data);
-      //debugger;
+        this.personaData = response.data.data1;
+        this.personaTotal = response.data.data2;
     });
 
-    },
+      axios({
+        method: 'get',
+        url: '/fuente/graficas',
+        transformResponse: [function (data) {
+        let respuesta = JSON.parse(data);
+        let valueData = [];
+
+          $.each(respuesta, function(key, value) {
+            if(value.id == 5){
+              let valueArr = ['Anticipo',  value.ant_fuente];
+              //debugger;
+              valueData.push(valueArr);
+
+              var valueArr2 = ['Devengado',  value.dev_fuente];
+
+              valueData.push(valueArr2);
+
+              //debugger;
+            }
+          });
+          // debugger;
+
+          return valueData;
+        }]
+      }).then(response => {
+        this.fuenteTotal = response.data;
+    });
+
+  },
 })
 
 $(document).ready(function(){
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
+  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+  $('.modal').modal();
 
-     // Initialize collapse button
-    $(".button-collapse").sideNav();
-    // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-    $('.collapsible').collapsible();
-  });
+   // Initialize collapse button
+  $(".button-collapse").sideNav();
+  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+  $('.collapsible').collapsible();
+});
 

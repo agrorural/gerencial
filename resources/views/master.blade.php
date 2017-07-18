@@ -22,9 +22,9 @@
               <div class="nav-wrapper"><a class="page-title">@yield('pageName')</a></div>
             </div>
           </nav>
-          <div class="container">
+    
             <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
-          </div>
+    
           @yield('sidebar')
           <sidebar-menu></sidebar-menu>
         </header>

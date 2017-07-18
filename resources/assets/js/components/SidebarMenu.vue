@@ -14,7 +14,7 @@
     <li class="no-padding">
         <ul class="collapsible collapsible-accordion">
           <li>
-            <a class="collapsible-header">Reportes<i class="material-icons">arrow_drop_down</i></a>
+            <a class="collapsible-header">Reportes<i class="material-icons">receipt</i></a>
             <div class="collapsible-body">
               <ul>
                 <li><a href="/reportes/persona">Personal</a></li>
@@ -26,10 +26,11 @@
       <li class="no-padding">
         <ul class="collapsible collapsible-accordion">
           <li>
-            <a class="collapsible-header">Gráficas<i class="material-icons">arrow_drop_down</i></a>
+            <a class="collapsible-header">Gráficas<i class="material-icons">equalizer</i></a>
             <div class="collapsible-body">
               <ul>
                 <li><a href="/graficas/persona">Personal</a></li>
+                <li><a href="/graficas/fuente">Presupuesto</a></li>
               </ul>
             </div>
           </li>
@@ -39,7 +40,7 @@
       <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
             <li>
-              <a class="collapsible-header">Recursos Humanos<i class="material-icons">arrow_drop_down</i></a>
+              <a class="collapsible-header">Recursos Humanos<i class="material-icons">perm_contact_calendar</i></a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="/reportes/persona">Reportes</a></li>
@@ -52,22 +53,10 @@
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
             <li>
-              <a class="collapsible-header">Abastecimiento<i class="material-icons">arrow_drop_down</i></a>
+              <a class="collapsible-header">Presupuesto<i class="material-icons">work</i></a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a href="/graficas/persona">Personal</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li class="no-padding">
-          <ul class="collapsible collapsible-accordion">
-            <li>
-              <a class="collapsible-header">Presupuesto<i class="material-icons">arrow_drop_down</i></a>
-              <div class="collapsible-body">
-                <ul>
-                  <li><a href="/graficas/persona">Personal</a></li>
+                  <li><a href="/graficas/fuente">Fuentes de Financiamiento</a></li>
                 </ul>
               </div>
             </li>

@@ -33,8 +33,15 @@ Route::get('/graficas', function () {
 	    return view('graficas.persona');
 	});
 
+	Route::get('/graficas/fuente', function () {
+	    return view('graficas.fuente');
+	});
+
+
 
 
 Route::get('/persona/datatable', 'PersonaController@getPersonas')->name('datatable.personas');
 
 Route::get('/persona/graficas', 'PersonaController@getChartPersonas');
+
+Route::get('/fuente/graficas', 'FuenteController@getChartFuentes');
