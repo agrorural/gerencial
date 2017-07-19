@@ -32,7 +32,7 @@ header{
 }
 
 header, main, footer {
-    padding-left: 300px;
+
 }
 
 #content{
@@ -54,12 +54,21 @@ nav.top-nav {
     a.page-title {
         font-size: 36px;
     	line-height: 122px;
-    	
 	}
 }
 
-.button-collapse.top-nav{
+.button-collapse.top-nav, .button-collapse.top-nav i{
+    display: block;
+    height: 122px;
+    line-height: 122px;
+    font-size: 36px;
     color: white;
+    margin: 0 18px 0 0;
+}
+
+.responsive-table{
+    max-width: 100%;
+    border-bottom: 1px solid transparent !important;
 }
 
 @media only screen and (max-width: 600px){
@@ -73,10 +82,11 @@ nav.top-nav {
         }
     }
 
-    .button-collapse.top-nav{
-        position: absolute;
-        top: 33%;
-        left: 5%;
+    .button-collapse.top-nav, .button-collapse.top-nav i{
+        height: 72px;
+        line-height: 72px;
+        font-size: 18px;
+        margin: 0;
     }
 }
 

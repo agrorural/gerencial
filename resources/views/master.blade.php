@@ -19,12 +19,13 @@
         <header>
           <nav class="top-nav">
             <div class="container">
-              <div class="nav-wrapper"><a class="page-title">@yield('pageName')</a></div>
+              <div class="nav-wrapper">
+                <a class="page-title">@yield('pageName')</a>
+                <a href="#" data-activates="nav-mobile" class="button-collapse top-nav"><i class="material-icons">menu</i></a>
+              </div>
             </div>
           </nav>
-    
-            <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
-    
+
           @yield('sidebar')
           <sidebar-menu></sidebar-menu>
         </header>

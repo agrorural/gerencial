@@ -1,5 +1,5 @@
 <template lang="html">
-  <ul id="nav-mobile" class="side-nav fixed">
+  <ul id="nav-mobile" class="side-nav">
     <li class="logo">
     <a href="/">
       <h3>
@@ -18,6 +18,7 @@
             <div class="collapsible-body">
               <ul>
                 <li><a href="/reportes/persona">Personal</a></li>
+                <li><a href="/reportes/fuente">Fuente</a></li>
               </ul>
             </div>
           </li>

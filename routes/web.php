@@ -25,6 +25,10 @@ Route::get('/reportes', function () {
     	return view('reportes.persona');
 	});
 
+	Route::get('/reportes/fuente', function () {
+    	return view('reportes.fuente');
+	});
+
 Route::get('/graficas', function () {
     	return view('graficas');
 	});
@@ -41,7 +45,9 @@ Route::get('/graficas', function () {
 
 
 Route::get('/persona/datatable', 'PersonaController@getPersonas')->name('datatable.personas');
+	
+	Route::get('/persona/graficas', 'PersonaController@getChartPersonas');
 
-Route::get('/persona/graficas', 'PersonaController@getChartPersonas');
+Route::get('/fuente/datatable', 'FuenteController@getFuentes')->name('datatable.fuentes');
 
-Route::get('/fuente/graficas', 'FuenteController@getChartFuentes');
+	Route::get('/fuente/graficas', 'FuenteController@getChartFuentes');

@@ -13,9 +13,15 @@ class FuenteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getFuentes()
     {
-        //
+        $fuentes = Fuente::select('item_fuente','des_fuente', 'year_fuente', 'ant_fuente', 'dev_fuente', 'porc_fuente')->get();
+
+        for ($i=0; $i < $fuentes->count() ; $i++) {
+            $fuentes[$i]->porc_fuente = $fuentes[$i]->porc_fuente . '%';
+        }
+
+        return Datatables::of($fuentes)->make(true);
     }
 
     public function getChartFuentes()

@@ -2,19 +2,19 @@
 @section('head')
 @stop
 @section('pageName')
-Reportes de Personal
+Reportes de Fuentes
 @stop
 
 @section('content')
-  <table id="persona" class="responsive-table compact">
+  <table id="fuente" class="responsive-tabl compact">
        <thead>
        <tr>
-           <th>Tipo</th>
+           <th>Item</th>
+           <th>Descripción</th>
            <th>Año</th>
-           <th>Mes</th>
-           <th>Patronal</th>
-           <th>Remuneración</th>
-           <th>Personal</th>
+           <th>Anticipo</th>
+           <th>Devengado</th>
+           <th>Porcentaje</th>
        </tr>
        </thead>
    </table>
@@ -25,20 +25,20 @@ Reportes de Personal
   <script src="{{ URL::asset('/js/datatables.js') }}"></script>
   <script type="text/javascript">
   $(document).ready(function() {
-    oTable = $('#persona').DataTable({
+    oTable = $('#fuente').DataTable({
         "processing": true,
         "serverSide": true,
         "language": {
             "url": "{{ URL::asset('/js/datatables.spanish.lang.json') }}"
         },
-        "ajax": "{{ route('datatable.personas') }}",
+        "ajax": "{{ route('datatable.fuentes') }}",
         "columns": [
-            {data: 'des_tipo_persona'},
-            {data: 'id_year'},
-            {data: 'id_month'},
-            {data: 'imp_patronal'},
-            {data: 'imp_remuneracion', "sType": "numeric-comma"},
-            {data: 'total_persona'}
+            {data: 'item_fuente'},
+            {data: 'des_fuente'},
+            {data: 'year_fuente'},
+            {data: 'ant_fuente', "sType": "numeric-comma"},
+            {data: 'dev_fuente', "sType": "numeric-comma"},
+            {data: 'porc_fuente'}
         ]
     });
   });

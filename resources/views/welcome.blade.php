@@ -16,20 +16,8 @@
                 @endif
             </div>
         @endif
-        <h1 class="page-header">Dashboard</h1>
+        <h1 class="page-header">Escritorio</h1>
         <div class="spinner-wrapper">
-           <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
+           <p>Aplicación de información gerencial de AGRO RURAL</p>
         </div>
 @stop
